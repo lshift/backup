@@ -1,11 +1,10 @@
-#!/usr/bin/env python
 """
 Usage: main [options] [directories]
 
 """
 
-#pylint: disable=C0103,W0621
 
+#!/usr/bin/python
 import smtplib
 import configReader
 import argparse
@@ -16,9 +15,10 @@ import os.path as op
 
 from email.mime.text import MIMEText
 
+
 def main(directory, config, output, stdout=False):
-    """Find the changes since last update and write to output.txt or standard
-    output."""
+    # Find the changes since last update and write to output.txt or standard
+    # output.
     mdFilePath = op.join(op.dirname(op.realpath(__file__)), "md5dir.py")
     mdCommandArgs = ["python", mdFilePath, "-m", directory]
     if not stdout:
@@ -78,5 +78,9 @@ if __name__ == "__main__":
     # Output file
     output = args.output if args.output else os.path.join(args.dir,
                                                           "output.txt")
-
-    main(args.dir, config, output, args.stdout)
+    # Standard output
+    if args.stdout:
+        main(args.dir, config, output, stdout=True)
+    else:
+        main(args.dir, config, output)
+        
