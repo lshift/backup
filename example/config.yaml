@@ -4,3 +4,4 @@ ignore:
     - "*.localstorage*"
     - ".config/chromium/*"
     - "usr/bin/md5sum.textutils"
+    - ".git*"
